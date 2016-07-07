@@ -2,9 +2,13 @@
  * http://www.bsidesoft.com/?p=2196
  */
 
+// 테스트 서버 구동
+const testServer = require('./server/test_server.js');
+testServer.run();
+
 const webdriver = require('selenium-webdriver');
-const opera = require('selenium-webdriver/opera');
-const driver = new webdriver.Builder().forBrowser('opera').build();
+const chrome = require('selenium-webdriver/chrome');
+const driver = new webdriver.Builder().forBrowser('chrome').build();
 const By = webdriver.By;
 
 const url = 'http://localhost:8000';
