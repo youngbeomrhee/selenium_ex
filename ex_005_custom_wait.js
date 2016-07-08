@@ -7,13 +7,9 @@ const chrome = require('selenium-webdriver/chrome');
 const Condition = wd.Condition;
 const WebElementCondition = wd.WebElementCondition;
 
-// 테스트 서버 구동
-const testServer = require('./server/test_server.js');
+// 테스트 서버(reporter, worker) 구동
+const testServer = require('./server/server_main.js');
 testServer.run();
-
-// 리포트 서버 구동
-const reportServer = require('./server/report_server.js');
-reportServer.run();
 
 //레포터준비
 const Reporter = require('./reporter.js');

@@ -2,13 +2,9 @@
 const webdriver = require('selenium-webdriver'), By = webdriver.By;
 const chrome = require('selenium-webdriver/chrome');
 
-// 테스트 서버 구동
-const testServer = require('./server/test_server.js');
+// 테스트 서버(reporter, worker) 구동
+const testServer = require('./server/server_main.js');
 testServer.run();
-
-const reportServer = require('./server/report_server.js');
-reportServer.run();
-
 
 //워커와 레포트 준비
 const worker = new webdriver.Builder().forBrowser('chrome').build();
@@ -21,9 +17,10 @@ report.get(reportUrl);
 //테스트시작
 const testUrl = 'http://localhost:8000';
 worker.get(testUrl);
+
 worker.findElement(By.id('title')).getText().then(
     v=>report.executeScript(
-        `document.getElementById('report').innerHTML += "<li>${v == 'selenium test'}</li>";`
+        `document.getElementById('report').innerHTML += "<li>${v == 'page for selenium'}</li>";`
     )
 );
 

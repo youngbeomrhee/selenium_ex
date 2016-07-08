@@ -1,9 +1,6 @@
-// 테스트 서버 구동
-const testServer = require('./server/test_server.js');
+// 테스트 서버(reporter, worker) 구동
+const testServer = require('./server/server_main.js');
 testServer.run();
-
-const reportServer = require('./server/report_server.js');
-reportServer.run();
 
 // worker 준비
 const Worker = require('./worker.js');
